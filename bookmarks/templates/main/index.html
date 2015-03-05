@@ -17,14 +17,14 @@
             <div id="main">
                 <div id="sidebar">
                     <ul>
-                        <li class="active" id="home">
-                            <a href="#">My Links</a>
+                        <li class="{% if active == 'index' %}active{% endif %}" id="home">
+                            <a href="/bookmarks">My Links</a>
                             {% if tag_name %}
                                 {{ tag_name }}
                             {% endif %}
                         </li>
                         <li><a href="javascript:;" id="addLink">Add a link</a></li>
-                        <li><a href="#">Tags</a></li>
+                        <li id="tagList" class="{% if active == 'tags' %}active{% endif %}"><a href="/bookmarks/tags">Tags</a></li>
                     </ul>
                 </div><!--
                 --><div id="content">
@@ -36,6 +36,11 @@
                                 <a href="/bookmarks/tags/{{ tag.name }}">{{ tag.name }} </a>
                             {% endfor %}
                         </p>
+                    </div>
+                    {% endfor %}
+                    {% for tag in tags %}
+                    <div class="link">
+                        <h4><a href="/bookmarks/tags/{{ tag.name }}"> {{ tag.name }}</a></h4>
                     </div>
                     {% endfor %}
                 </div>

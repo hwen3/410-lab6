@@ -14,14 +14,14 @@ def index(request):
     # Get all links
     links = Link.objects.all()
 
-    return render_to_response('main/index.html', {'links': links}, context)
+    return render_to_response('main/index.html', {'links': links, 'active': 'index'}, context)
 
 def tags(request):
     context = RequestContext(request)
 
     tags = Tag.objects.all()
 
-    return render_to_response('main/tags.html', {'tags': tags}, context)
+    return render_to_response('main/index.html', {'tags': tags, 'active': 'tags'}, context)
 
 def tag(request, tag_name):
     context = RequestContext(request)
